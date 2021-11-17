@@ -99,7 +99,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
                     f"**Name**: `{t_file.name}`\n"
                     f"**Completed**: {humanbytes(downloaded)}\n"
                     f"**Total**: {t_file.total_length_string()}\n"
-                    f"**Speed**: {t_file.download_speed_string()}ðŸ”»\n"
+                    f"**Speed**: {t_file.download_speed_string()} 🔻\n"
                     f"{info_msg}"
                     f"**ETA**: {t_file.eta_string()}\n"
                     f"**GID** : `{gid}`"
@@ -108,7 +108,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
                     await message.edit(msg)
                     previous = msg
             else:
-                if complete:
+                if complete and not t_file.name.lower().startswith("[metadata]"):
                     if tg_upload:
                         return await upload(message, Path(t_file.name))
                     else:
@@ -224,7 +224,7 @@ async def remove_a_download(message):
         return
     file_name = downloads.name
     aria2p_client.remove(downloads=[downloads], force=True, files=True, clean=True)
-    await message.edit("Successfully canceled download. \n\n`{file_name}`")
+    await message.edit(f"Successfully cancelled download. \n\n`{file_name}`")
 
 
 @userge.on_cmd("ashow", about={
