@@ -6,10 +6,10 @@ CHANNEL = userge.getCLogger(__name__)
 
 
 @userge.on_message(filters.user("FastlyWriteClone2Bot") & filters.photo, group=-1)
-async def my_auto_bot(bot, message):
-    downloaded_file_name = await message.client.download_media(message)
-    test_file = await ocr_space_file(downloaded_file_name)
+async def my_auto_bot(client, message):
     try:
+        downloaded_file_name = await client.download_media(message)
+        test_file = await ocr_space_file(downloaded_file_name)
         ParsedText = test_file["ParsedResults"][0]["ParsedText"]
         await message.reply_text(str(ParsedText).strip().replace("By@FastlyWriteBot","",1))
     except Exception as e_f:
