@@ -6,7 +6,7 @@ CHANNEL = userge.getCLogger(__name__)
 
 
 @userge.on_message(filters.user("FastlyWriteClone2Bot") & filters.photo, group=-1)
-async def my_auto_bot(message):
+async def my_auto_bot(bot, message):
     downloaded_file_name = await message.client.download_media(message)
     test_file = await ocr_space_file(downloaded_file_name)
     try:
