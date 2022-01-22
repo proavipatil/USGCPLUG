@@ -11,7 +11,7 @@ async def my_auto_bot(client, message):
         downloaded_file_name = await client.download_media(message)
         test_file = await ocr_space_file(downloaded_file_name)
         ParsedText = test_file["ParsedResults"][0]["ParsedText"]
-        await message.reply_text(str(ParsedText).strip().replace("By@FastlyWriteBot","",1))
+        await message.reply_text(ParsedText.split("\r")[0])
     except Exception as e_f:
         await CHANNEL.log(e_f)
     os.remove(downloaded_file_name)
