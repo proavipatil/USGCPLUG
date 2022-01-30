@@ -11,7 +11,7 @@ from pathlib import Path
 from subprocess import PIPE, Popen
 from requests import get
 from userge.utils import progress, humanbytes
-from userge.plugins.misc.upload import upload
+from userge.plugins.misc.upload import upload_path
 import aria2p
 
 LOGS = userge.getLogger(__name__)
@@ -111,7 +111,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
             else:
                 if complete and not t_file.name.lower().startswith("[metadata]"):
                     if tg_upload:
-                        return await upload(message, Path(t_file.name))
+                        return await upload_path(message, Path(t_file.name, False))
                     else:
                         return await message.edit(
                                      f"**Name :** `{t_file.name}`\n"
