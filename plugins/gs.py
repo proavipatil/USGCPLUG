@@ -37,7 +37,7 @@ async def jv_gsearch(message: Message):
         des = result["Description"]
         msg += f"[{title}]({link})\n`{des}`\n\n"
     if msg != "":
-        await message.edit(text=f"**Search Query:**\n`{searchit}`\n\n**Results:**\n{msg}",
+        await message.edit(text=f"**Search Query:**\n`{query}`\n\n**Results:**\n{msg}",
                            disable_web_page_preview=True,
                            parse_mode="Markdown")
     else:
