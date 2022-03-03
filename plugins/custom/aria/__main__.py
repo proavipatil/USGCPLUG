@@ -120,7 +120,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
                                      "**Response :** __Successfully downloaded...__"
                                     )
                 await message.edit(f"`{msg}`")
-            await sleep(Config.EDIT_SLEEP_TIMEOUT)
+            await sleep(Config.Dynamic.EDIT_SLEEP_TIMEOUT)
             await check_progress_for_dl(gid, message, previous, tg_upload)
         except Exception as e:
             if "not found" in str(e) or "'file'" in str(e):
@@ -153,7 +153,7 @@ async def t_url_download(message: Message):
         resource = message.reply_to_message
         resource = await message.client.download_media(
             message=resource,
-            file_name=Config.DOWN_PATH,
+            file_name=Config.Dynamic.DOWN_PATH,
             progress=progress,
             progress_args=(message, "trying to download")
         )
@@ -183,7 +183,7 @@ async def t_url_download(message: Message):
     gid = download.gid
     await message.edit("`Processing......`")
     await check_progress_for_dl(gid=gid, message=message, previous="", tg_upload=tg_upload)
-    await sleep(Config.EDIT_SLEEP_TIMEOUT)
+    await sleep(Config.Dynamic.EDIT_SLEEP_TIMEOUT)
     if is_url:
         file = aria2p_client.get_download(gid)
         if file.followed_by_ids:
@@ -203,7 +203,7 @@ async def remove_all(message):
         aria2p_client.purge()
     except Exception as e:
         message = await message.err({str(e)})
-        await sleep(Config.EDIT_SLEEP_TIMEOUT)
+        await sleep(Config.Dynamic.EDIT_SLEEP_TIMEOUT)
     if not removed:  # If API returns False Try to Remove Through System Call.
         subprocess_run("aria2p remove-all")
     await message.edit("`Clearing on-going downloads... `")
