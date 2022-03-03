@@ -4,7 +4,7 @@
 
 
 from asyncio import sleep
-from userge import userge, Config, Message
+from userge import userge, config as Config, Message
 import math
 import os
 from pathlib import Path
