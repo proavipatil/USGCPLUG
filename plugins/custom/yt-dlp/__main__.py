@@ -17,7 +17,7 @@ from math import floor
 import wget
 import yt_dlp as ytdl
 
-from userge import userge, Message, Config, pool
+from userge import userge, Message, config as Config, pool
 from userge.utils import time_formatter, humanbytes
 from . .misc.upload import upload
 
