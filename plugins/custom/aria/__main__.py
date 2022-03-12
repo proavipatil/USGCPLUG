@@ -140,7 +140,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
     'header': "Download files to server from torrent or magnet using aria2p",
     'usage': "{tr}adownload [url/magnet | reply to torrent file]",
     'examples': "{tr}adownload https://speed.hetzner.de/100MB.bin"},
-    check_downpath=True)
+    check_downpath=True, del_pre=True)
 async def t_url_download(message: Message):
     "Add url Into Queue."
     is_url = False
