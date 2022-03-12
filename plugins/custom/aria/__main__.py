@@ -25,11 +25,10 @@ def subprocess_run(cmd):
         return
     return talk
 
-@hook(str)
-def rreplace(self, old, new, count=-1):
-    return self[::-1].replace(old[::-1], new[::-1], count)[::-1]
+def rreplace(myStr):
+    return myStr[::-1].replace("/","",1)[::-1]
 
-DOWN_PATH = Config.Dynamic.DOWN_PATH.rreplace("/", "", 1)
+DOWN_PATH = rreplace(Config.Dynamic.DOWN_PATH)
 
 def aria_start():
     trackers_list = get(
