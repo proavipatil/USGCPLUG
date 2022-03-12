@@ -29,6 +29,8 @@ def subprocess_run(cmd):
 def rreplace(self, old, new, count=-1):
     return self[::-1].replace(old[::-1], new[::-1], count)[::-1]
 
+DOWN_PATH = Config.Dynamic.DOWN_PATH.rreplace("/", "", 1)
+
 def aria_start():
     trackers_list = get(
     "https://raw.githubusercontent.com/ngosang/trackerslist/master/trackers_best.txt"
@@ -43,7 +45,7 @@ def aria_start():
           --check-certificate=false \
           --follow-torrent=mem \
           --seed-time=0 \
-          --dir={Config.Dynamic.DOWN_PATH.rreplace("/","",1)} \
+          --dir={DOWN_PATH} \
           --max-upload-limit=1K \
           --max-concurrent-downloads=5 \
           --min-split-size=10M \
