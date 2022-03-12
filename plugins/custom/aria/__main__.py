@@ -179,7 +179,7 @@ async def t_url_download(message: Message):
             except Exception as e:
                 return await message.err(str(e))
     else:
-        await message.edit("Reply to torrent file or send cmd with Torrent/URL.\n\n`Check /help`")
+        await message.edit("Reply to torrent file or send cmd with Magnet/URL.\n\nCheck `.help adownload`")
         return
     gid = download.gid
     await message.edit("`Processing......`")
