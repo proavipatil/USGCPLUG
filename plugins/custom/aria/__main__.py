@@ -13,6 +13,7 @@ from requests import get
 from userge.utils import progress, humanbytes
 from userge.plugins.misc.upload.__main__ import upload_path
 import aria2p
+from fishhook import hook
 
 LOGS = userge.getLogger(__name__)
 
@@ -23,6 +24,10 @@ def subprocess_run(cmd):
     if exitCode != 0:
         return
     return talk
+
+@hook(str)
+def rreplace(self, old, new, count=-1):
+    return self[::-1].replace(old[::-1], new[::-1], count)[::-1]
 
 def aria_start():
     trackers_list = get(
@@ -38,7 +43,7 @@ def aria_start():
           --check-certificate=false \
           --follow-torrent=mem \
           --seed-time=0 \
-          --dir={Config.Dynamic.DOWN_PATH} \
+          --dir={Config.Dynamic.DOWN_PATH.rreplace("/","",1)} \
           --max-upload-limit=1K \
           --max-concurrent-downloads=5 \
           --min-split-size=10M \
