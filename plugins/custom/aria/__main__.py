@@ -38,6 +38,7 @@ def aria_start():
           --check-certificate=false \
           --follow-torrent=mem \
           --seed-time=0 \
+          --dir={Config.Dynamic.DOWN_PATH} \
           --max-upload-limit=1K \
           --max-concurrent-downloads=5 \
           --min-split-size=10M \
@@ -111,7 +112,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
             else:
                 if complete and not t_file.name.lower().startswith("[metadata]"):
                     if tg_upload:
-                        return await upload_path(message, Path(t_file.name, False))
+                        return await upload_path(message, Path(t_file.name), False)
                     else:
                         return await message.edit(
                                      f"**Name :** `{t_file.name}`\n"
