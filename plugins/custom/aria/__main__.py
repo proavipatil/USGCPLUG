@@ -44,7 +44,6 @@ def aria_start():
           --check-certificate=false \
           --follow-torrent=mem \
           --seed-time=0 \
-          #--dir={DOWN_PATH} \
           --max-upload-limit=1K \
           --max-concurrent-downloads=5 \
           --min-split-size=10M \
