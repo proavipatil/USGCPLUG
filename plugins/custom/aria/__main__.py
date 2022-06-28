@@ -122,7 +122,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
                         return await message.edit(
                                      f"**Name :** `{t_file.name}`\n"
                                      f"**Size :** `{t_file.total_length_string()}`\n"
-                                     f"**Path :** `{t_file.name}`\n"
+                                     f"**Path :** `{t_file.dir}`\n"
                                      "**Response :** __Successfully downloaded...__"
                                     )
                 await message.edit(f"`{msg}`")
