@@ -150,8 +150,11 @@ async def t_url_download(message: Message):
     "Add url Into Queue."
     is_url = False
     tg_upload = False
-    if 't' in message.flags:
+    if '-t' in message.flags:
         tg_upload = True
+    myoptions = {
+             "dir": Config.Dynamic.DOWN_PATH
+        }
     if (message.reply_to_message and 
            message.reply_to_message.document and 
            message.reply_to_message.document.file_name.lower().endswith(
@@ -165,7 +168,7 @@ async def t_url_download(message: Message):
         )
         try:
             download = aria2p_client.add_torrent(
-                resource, uris=None, options=None, position=None
+                resource, uris=None, options=myoptions, position=None
         )
         except Exception as e:
             return await message.err(str(e))
@@ -175,12 +178,12 @@ async def t_url_download(message: Message):
         if resource.lower().startswith("http"):
             try:  # Add URL Into Queue
                 resource = [resource]
-                download = aria2p_client.add_uris(resource, options=None)
+                download = aria2p_client.add_uris(resource, options=myoptions)
             except Exception as e:
                 return await message.err(str(e))
         elif resource.lower().startswith("magnet:"):
             try:  # Add Magnet Into Queue
-                download = aria2p_client.add_magnet(resource, options=None)
+                download = aria2p_client.add_magnet(resource, options=myoptions)
             except Exception as e:
                 return await message.err(str(e))
     else:
