@@ -153,7 +153,7 @@ async def t_url_download(message: Message):
     if '-t' in message.flags:
         tg_upload = True
     myoptions = {
-             "dir": os.path.join("./", Config.Dynamic.DOWN_PATH)
+             "dir": os.path.join("/app", Config.Dynamic.DOWN_PATH)
         }
     if (message.reply_to_message and 
            message.reply_to_message.document and 
