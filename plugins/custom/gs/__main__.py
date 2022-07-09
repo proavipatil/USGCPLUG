@@ -39,7 +39,6 @@ async def jv_gsearch(message: Message):
         msg += f"[{title}]({link})\n`{des}`\n\n"
     if msg != "":
         await message.edit(text=f"**Search Query:**\n`{query}`\n\n**Results:**\n{msg}",
-                           disable_web_page_preview=True,
-                           parse_mode="Markdown")
+                           disable_web_page_preview=True)
     else:
         await message.edit("`The result parsing was unsuccessful. It is either your query could not be found or it was flagged as unusual traffic`")
