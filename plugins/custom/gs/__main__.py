@@ -7,7 +7,7 @@ from userge import userge, Message
 from urllib.parse import unquote_plus
 
 # Please don't steal this code.
-GS_API_URL = os.environ.get("GS_API_URL","https://jv-api.deta.dev/google?query={squery}&limit={slimit}")
+GS_API_URL = os.environ.get("GS_API_URL","https://api.jigarvarma.tech/google?query={squery}&limit={slimit}")
 
 
 @userge.on_cmd("gs", about={
