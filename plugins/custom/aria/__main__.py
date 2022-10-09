@@ -141,7 +141,7 @@ async def check_progress_for_dl(gid, message: Message, previous, tg_upload):  # 
 
 
 
-@userge.on_cmd("adownload", about={
+@userge.on_cmd("dl", about={
     'header': "Download files to server from torrent or magnet using aria2p",
     'usage': "{tr}adownload [url/magnet | reply to torrent file]",
     'examples': "{tr}adownload https://speed.hetzner.de/100MB.bin"},
