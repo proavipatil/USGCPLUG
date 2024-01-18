@@ -1,4 +1,4 @@
 aria2p
 yt-dlp
 heroku3
-pyrogram==2.0.106
+pyrogram
