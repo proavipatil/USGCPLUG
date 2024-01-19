@@ -1,4 +1,7 @@
 aria2p
 yt-dlp
+dnspython==2.3.0
 heroku3
-pyrogram
+motor
+pyrogram==2.0.106
+tgcrypto
