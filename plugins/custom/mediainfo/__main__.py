@@ -60,8 +60,7 @@ async def mediainfo(message: Message):
     if not reply:
         process = await message.edit("`Processing`")
         url_ = message.text.split(" ",1)[1]
-        useurl_ = unquote_plus(url_)
-        output_ = await runcmd(f'mediainfo "{useurl_}"')
+        output_ = await runcmd(f'mediainfo "{url_}"')
         out = None
         if len(output_) != 0:
             out = output_[0]
